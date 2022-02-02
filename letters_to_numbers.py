@@ -58,7 +58,7 @@ letter_numbers = {"a": 1,
                   }
 
 
-def to_numbers(in_string):
+def to_numbers(in_string, as_string = True):
     """
     return a string with all letters replaced by their place in the alphabet
     :param in_string: the string to replace
@@ -73,13 +73,63 @@ def to_numbers(in_string):
         else:
             work_list.append(letter)
     out_string = "-".join(work_list)
-    return out_string
+
+    if as_string:
+        return out_string
+    else:
+        return work_list
+
+
+# Bonus: digit sum, because sometimes the numbers are too big for pin codes
+def digit_sum(input_list):
+    """
+    gets a list with integers, returns list with digit sums of original numbers
+    :param in_list: list with integers
+    :return: list of integers
+    """
+    integer_list = convert_str_to_int_list(input_list)
+    digit_list = []
+    for num in integer_list:
+        print(num, integer_list)
+        if type(num) == int:
+            # calculate digit sum of num
+            string_num = str(num)
+            print(num)
+            if len(string_num) > 1:
+                for elem in string_num:
+                    sum_int = + int(elem)
+            else:
+                sum_int = int(string_num)
+            digit_list.append(sum_int)
+        else:
+            # single digit, just same number
+            digit_list.append(num)
+
+        return digit_list
+
+
+def convert_str_to_int_list(str_list):
+    """
+    gets a list of numbers as strings, returns a list of numbers as integers
+    :param str_list: a list of numbers as string
+    :return: list of numbers as int
+    """
+    int_list = []
+    for number in str_list:
+        if number in "0123456789":
+            int_list.append(int(number))
+        else:
+            pass
+    return int_list
 
 
 if __name__ == "__main__":
-    input_word = str(input("What word do you want to convert to a string? "))
-    new_word = to_numbers(input_word)
-    print(new_word)
+    input_word = "lena"  # str(input("What word do you want to convert to a string? "))
+    numbered_word = to_numbers(input_word, False)
+    print(numbered_word)
+    digit_summed_word = digit_sum(numbered_word)
+    print(digit_summed_word)
+
     # scendgame = "SuperCorp Endgame"
     # sceg_num = to_numbers(scendgame)
     # print(sceg_num)
