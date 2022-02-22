@@ -124,7 +124,8 @@ def convert_str_to_int_list(str_list):
 
 
 if __name__ == "__main__":
-    input_word = "lena"  # str(input("What word do you want to convert to a string? "))
+    input_word = str(input("What word do you want to convert to a string? "))
+    # "lena"
     numbered_word = to_numbers(input_word, False)
     print(numbered_word)
     digit_summed_word = digit_sum(numbered_word)
